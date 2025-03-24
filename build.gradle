@@ -7,6 +7,16 @@ plugins {
 group = 'com.akdev'
 version = '0.0.1-SNAPSHOT'
 
+bootRun {
+	systemProperty 'spring.profiles.active', 'testdata'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
 java {
 	toolchain {
 		languageVersion = JavaLanguageVersion.of(21)
@@ -20,6 +30,7 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-configuration-processor'
 
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
